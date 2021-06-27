@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="Images/favicon.ico" type="image/icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> 
+    
+</head>
+<body class="body">  
+    <div class="header">
+        <nav class="nav">
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main">
+        <div class="userOne">
+            <h2> Player 1</h2>
+            <i class="fa fa-times"> </i>
+            <p id ="time"></p>
+            <h3> Score</h3>
+            <p id='score1'>0</p>
+            <div id="userOneScore"></div>
+        </div>
+        <div class="boardHeader">
+            <div class="board">
+                <div class="slot1" id="slot1" onclick="moves(slot1); checkWinner()"></div>
+                <div class="slot2" id="slot2" onclick="moves(slot2); checkWinner()"></div>
+                <div class="slot3" id="slot3" onclick="moves(slot3); checkWinner()"></div>
+                <div class="slot4" id="slot4" onclick="moves(slot4); checkWinner()"></div>
+                <div class="slot5" id="slot5" onclick="moves(slot5); checkWinner()"></div>
+                <div class="slot6" id="slot6" onclick="moves(slot6); checkWinner()"></div>
+                <div class="slot7" id="slot7" onclick="moves(slot7); checkWinner()"></div>
+                <div class="slot8" id="slot8" onclick="moves(slot8); checkWinner()"></div>
+                <div class="slot9" id="slot9" onclick="moves(slot9); checkWinner()"></div>
+            </div>
+            <div class="announceWinner" style="display: none;">
+                <div class="scoreBoard"></div>
+                <div id="newGame">
+                   <button class="newGame">New Game</button>
+                </div>
+            </div>
+        </div>
+        <div class="userTwo">
+            <h2> Player 2</h2>
+            <i class="fa fa-circle-o"> </i>
+            <p id="circle"></p>
+            <h3> Score</h3>
+            <p id='score2'>0</p>
+            <div id="userTwoScore"></div>
+        </div>
+    </div>
+    <button onclick="reset();" class="reset"> Reset</button>
+    <footer>
+        <div class='icons'>
+            <i class="fa fa-facebook-square"></i>
+            <i class="fa fa-twitter-square"></i>
+            <i class="fa fa-github-square"></i>
+            <i class="fa fa-linkedin-square"></i>
+        </div>
+        <p class='copyright'>&copy;2021<p></p>
+    </footer>
+    <script src='script.js'></script>
+</body>
+</html>

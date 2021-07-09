@@ -1,6 +1,6 @@
 
-const circle = '<i class="fa fa-circle-o"> </i>'
-const time= '<i class="fa fa-times"> </i>'
+const x = '<i class="fa fa-times"> </i>'
+const o= '<i class="fa fa-circle-o"> </i>'
 let slot1 = document.getElementById("slot1");
 let slot2 = document.getElementById("slot2");
 let slot3 = document.getElementById("slot3");
@@ -17,20 +17,30 @@ let announce = document.querySelector(".announceWinner")
 const newGame = document.querySelector(".newGame")
 const resetButton = document.querySelector(".reset")
 const scoreBoard= document.querySelector(".scoreBoard")
+const oAudio = new Audio('sounds/o-audio.mp3');
+const xAudio = new Audio('sounds/x-audio.mp3');
+const errorAudio = new Audio('sounds/error.mp3');
+const winnerAudio = new Audio('sounds/winner.mp3')
+const drawAudio = new Audio('sounds/draw.mp3')
+
 let turn = 1;
 let player1Score = 0;
 let player2Score = 0;
 
 //game play based on onclick functions embedded in HTML
 function moves(slot) {
-    if(slot.innerHTML == circle || slot.innerHTML == time){
+    if(slot.innerHTML == o || slot.innerHTML == x){
+        errorAudio.play();
+        alert("Cant Move there, Choose another spot.");
     }else{
         if(turn == 1) {
-            slot.innerHTML = time;
+            slot.innerHTML = x;
             turn = 0;
+            xAudio.play();
         }else {
-            slot.innerHTML = circle;
+            slot.innerHTML = o;
             turn = 1;
+            oAudio.play();
         }
     }
 } 
@@ -39,47 +49,50 @@ determines the winner based on the player's moves or determines a tie at the end
 slots are filled.
 */
 function checkWinner() {
-    if ((slot1.innerHTML ==  time && slot4.innerHTML ==  time && slot7.innerHTML == time) 
-    || (slot1.innerHTML == time && slot2.innerHTML == time && slot3.innerHTML == time)
-    || (slot2.innerHTML == time && slot5.innerHTML == time && slot8.innerHTML == time)
-    || (slot3.innerHTML == time && slot6.innerHTML == time && slot9.innerHTML == time)
-    || (slot4.innerHTML == time && slot5.innerHTML == time && slot6.innerHTML == time)
-    || (slot7.innerHTML == time && slot8.innerHTML == time && slot9.innerHTML == time)
-    || (slot1.innerHTML == time && slot5.innerHTML == time && slot9.innerHTML == time)
-    || (slot3.innerHTML == time && slot5.innerHTML == time && slot7.innerHTML == time)){
+    if ((slot1.innerHTML ==  x && slot4.innerHTML ==  x && slot7.innerHTML == x) 
+    || (slot1.innerHTML == x && slot2.innerHTML == x && slot3.innerHTML == x)
+    || (slot2.innerHTML == x && slot5.innerHTML == x && slot8.innerHTML == x)
+    || (slot3.innerHTML == x && slot6.innerHTML == x && slot9.innerHTML == x)
+    || (slot4.innerHTML == x && slot5.innerHTML == x && slot6.innerHTML == x)
+    || (slot7.innerHTML == x && slot8.innerHTML == x && slot9.innerHTML == x)
+    || (slot1.innerHTML == x && slot5.innerHTML == x && slot9.innerHTML == x)
+    || (slot3.innerHTML == x && slot5.innerHTML == x && slot7.innerHTML == x)){
         board.style.display = 'none';
         announce.style.display = "flex"
         player1Score++;
         score1.innerHTML = `${player1Score}`
         scoreBoard.innerHTML = 'Player 1 won'
+        winnerAudio.play();
         
-        } else  if((slot1.innerHTML == circle && slot4.innerHTML == circle && slot7.innerHTML == circle) 
-    || (slot1.innerHTML == circle && slot2.innerHTML == circle && slot3.innerHTML == circle)
-    || (slot2.innerHTML == circle && slot5.innerHTML == circle && slot8.innerHTML == circle)
-    || (slot3.innerHTML == circle && slot6.innerHTML == circle && slot9.innerHTML == circle)
-    || (slot4.innerHTML == circle && slot5.innerHTML == circle && slot6.innerHTML == circle)
-    || (slot7.innerHTML == circle && slot8.innerHTML == circle && slot9.innerHTML == circle)
-    || (slot1.innerHTML == circle && slot5.innerHTML == circle && slot9.innerHTML == circle)
-    || (slot3.innerHTML == circle && slot5.innerHTML == circle && slot7.innerHTML == circle)){
+        } else  if((slot1.innerHTML == o && slot4.innerHTML == o && slot7.innerHTML == o) 
+    || (slot1.innerHTML == o && slot2.innerHTML == o && slot3.innerHTML == o)
+    || (slot2.innerHTML == o && slot5.innerHTML == o && slot8.innerHTML == o)
+    || (slot3.innerHTML == o && slot6.innerHTML == o && slot9.innerHTML == o)
+    || (slot4.innerHTML == o && slot5.innerHTML == o && slot6.innerHTML == o)
+    || (slot7.innerHTML == o && slot8.innerHTML == o && slot9.innerHTML == o)
+    || (slot1.innerHTML == o && slot5.innerHTML == o && slot9.innerHTML == o)
+    || (slot3.innerHTML == o && slot5.innerHTML == o && slot7.innerHTML == o)){
         board.style.display = "none";
         announce.style.display = "flex"
         player2Score++;
         score2.innerHTML = `${player2Score}`;
         scoreBoard.innerHTML = 'Player 2 won'
+        winnerAudio.play();
        
-    }else if ((slot1.innerHTML == time || slot1.innerHTML == circle)
-    && (slot2.innerHTML == time || slot2.innerHTML == circle)
-    && (slot3.innerHTML == time || slot3.innerHTML == circle)
-    && (slot4.innerHTML == time || slot4.innerHTML == circle)
-    && (slot5.innerHTML == time || slot5.innerHTML == circle)
-    && (slot6.innerHTML == time || slot6.innerHTML == circle)
-    && (slot7.innerHTML == time || slot7.innerHTML == circle)
-    && (slot8.innerHTML == time || slot8.innerHTML == circle)
-    && (slot9.innerHTML == time || slot9.innerHTML == circle)
+    }else if ((slot1.innerHTML == x || slot1.innerHTML == o)
+    && (slot2.innerHTML == x || slot2.innerHTML == o)
+    && (slot3.innerHTML == x || slot3.innerHTML == o)
+    && (slot4.innerHTML == x || slot4.innerHTML == o)
+    && (slot5.innerHTML == x || slot5.innerHTML == o)
+    && (slot6.innerHTML == x || slot6.innerHTML == o)
+    && (slot7.innerHTML == x || slot7.innerHTML == o)
+    && (slot8.innerHTML == x || slot8.innerHTML == o)
+    && (slot9.innerHTML == x || slot9.innerHTML == o)
     ){
        board.style.display = "none";
-       announce.style.display = "flex"
-       scoreBoard.innerHTML = "It's a tie game"
+       announce.style.display = "flex";
+       scoreBoard.innerHTML = "It's a tie game";
+       drawAudio.play();
     }
 }
 /*

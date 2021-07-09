@@ -16,10 +16,15 @@
 <body class="body">  
     <div class="header">
         <nav class="nav">
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
+            <div class="mobileMenu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="menuItems">
+                <li id="home" onclick="">Home</li>
+                <li id="about" onclick="">About</li>
+                <li id="contact" onclick="">Contact</li>
             </ul>
         </nav>
     </div>
@@ -47,7 +52,7 @@
             <div class="announceWinner" style="display: none;">
                 <div class="scoreBoard"></div>
                 <div id="newGame">
-                   <button class="newGame">New Game</button>
+                   <button class="newGame button">New Game</button>
                 </div>
             </div>
         </div>
@@ -59,8 +64,16 @@
             <p id='score2'>0</p>
             <div id="userTwoScore"></div>
         </div>
+        <button onclick="reset();" class="reset button"> Reset</button>
     </div>
-    <button onclick="reset();" class="reset"> Reset</button>
+    
+    <div class="about">
+        <h1>About Tic Tac Toe</h1>
+        <p></p>
+    </div>
+    <div class="contact">
+
+    </div>
     <footer>
         <div class='icons'>
             <i class="fa fa-facebook-square"></i>

@@ -1,4 +1,9 @@
-* {
+:root{
+    --gray: #8F8F8F
+}
+
+*
+ {
     margin: 0;
     padding: 0;
     /* background: rgba(60, 60, 60, 0.8); */
@@ -13,7 +18,9 @@ body {
     justify-content: flex-end;
     padding: 10px; 
 }
-
+.nav {
+    height: 10vh;
+}
 .nav ul {
     list-style: none;
 }
@@ -31,14 +38,18 @@ body {
     grid-gap: 15px
 }
 .userOne, .userTwo{
-    border: red solid;
+    background-color:#ddd ;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    border-radius: 15px;
+    border-radius: 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+            rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
+
 .userOne i, .userTwo i {
     font-size: 4rem;
     padding: 20px;
@@ -51,75 +62,77 @@ body {
     height: 80vh;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    border: blue solid;
     border-radius: 15px;
     grid-gap: 1px;
     text-align: center;
     font-size: 6rem;  
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, 
+                rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 .slot1 {
-    border-right: solid;
-    border-bottom: solid;
+    border-right: solid var(--gray);
+    border-bottom: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .slot2 {
-    border-left: solid ;
-    border-right: solid ;
-    border-bottom: solid ;
+    border-left: solid var(--gray);
+    border-right: solid var(--gray);
+    border-bottom: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .slot3 {
-    border-left: solid ;
-    border-bottom: solid ;
+    border-left: solid var(--gray);
+    border-bottom: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 .slot4{
-    border-top: solid ;
-    border-bottom: solid ;
-    border-right: solid ;
+    border-top: solid var(--gray);
+    border-bottom: solid var(--gray);
+    border-right: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .slot5{
-    border: solid;
+    border: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .slot6{
-    border-left: solid;
-    border-top: solid;
-    border-bottom: solid;
+    border-left: solid var(--gray);
+    border-top: solid var(--gray);
+    border-bottom: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .slot7 {
-    border-top: solid ;
-    border-right: solid;
+    border-top: solid var(--gray);
+    border-right: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .slot8 {
-    border-top: solid;
-    border-left: solid;
-    border-right: solid;
+    border-top: solid var(--gray);
+    border-left: solid var(--gray);
+    border-right: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .slot9{
-    border-top: solid;
-    border-left: solid ;
+    border-top: solid  var(--gray);
+    border-left: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,12 +141,14 @@ body {
 
 .announceWinner {
     display: none;
-    border:  solid black;
+    border:  solid var(--gray);
     border-radius: 15px;
     flex-direction: column;
     justify-content: center;
     align-items:center;
     height: 80vh;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, 
+                rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 .scoreBoard{
     font-size: 2rem;
@@ -145,6 +160,9 @@ body {
     padding: 10px 25px;
     font-size: 1rem;
     font-weight: bold;
+}
+h2{
+    font-size: 1.8rem;;
 }
 .reset {
     position: absolute;
@@ -164,4 +182,110 @@ footer {
 footer p {
     font-size: 16px;
     bottom: 0;
+}
+.button{
+    background-color: #ddd;
+    border-radius: 5px;
+}
+.button:hover {
+    background-color: #444;
+    color: #fff
+}
+.about{
+    display: none;
+}
+@media screen and (max-width:1024px) {
+    .main{
+        display: grid;
+        grid-template-areas: 
+            "user1 board"
+            "user2 board";
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: auto;
+    }
+    .userOne{
+        grid-area: user1;
+        height: 39vh;
+        font-size: 1.3rem;
+    }
+    .userTwo {
+        grid-area: user2;
+        height: 39vh;
+        font-size: 1.3rem;
+    }
+    .boardHeader {
+        grid-area: board;
+        grid-row-end: -1;
+    }
+    .userOne i, .userTwo i{
+        font-size: 3rem;
+        padding: 15px;
+    }
+    .nav {
+        height: 6vh;
+    }
+   .reset{
+       bottom: 10px;
+       right: 10px
+   }
+}
+
+@media screen and (min-width:320px) and (max-width:799px){
+    .menuItems {
+        display: none;
+    }
+    h2{
+        font-size: 25px;
+    }
+    .main{
+        display: grid;
+        grid-template-areas: 
+            "user1 user2"
+            "board board";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    .userOne{
+        grid-area: user1;
+        height: 20vh;
+
+    }
+    .userTwo {
+        grid-area: user2;
+        height: 20vh;
+    }
+    .boardHeader {
+        grid-area: board;
+        grid-column-start: 1;
+        grid-column-end: 3;
+       
+    }
+    .board, .announceWinner{
+        height: 60vh;
+    }
+    .userOne i, .userTwo i{
+        font-size: 2rem !important;
+        padding: 2px !important;
+    }
+    h2{
+        font-size: 20px;
+    }
+    h3{
+        font-size: 16px;
+    }
+    .header{
+        height: 0vh;
+    }
+    .reset {
+       
+        bottom:10px;
+        right: 5px;
+        padding: 5px 10px;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .board{
+        font-size: 4rem;
+        padding: 0;
+    }
 }

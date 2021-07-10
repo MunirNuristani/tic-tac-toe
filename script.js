@@ -174,9 +174,9 @@ messageForm.addEventListener('submit', (event)=>{
     event.preventDefault();
     const{name, email, message } = event.target;
     const msg = {
-        name: name,
-        email: email,
-        message: message,
+        name: name.value,
+        email: email.value,
+        message: message.value,
         };
     const options = {
         method: 'POST',

@@ -1,13 +1,10 @@
 :root{
     --gray: #8F8F8F
 }
-
-*
- {
+*{
     margin: 0;
     padding: 0;
-    /* background: rgba(60, 60, 60, 0.8); */
-    /* color: rgba(255, 255, 255, 1); */
+ 
     font-family: 'Poppins', sans-serif;
 }
 body {
@@ -18,8 +15,9 @@ body {
     justify-content: flex-end;
     padding: 10px; 
 }
-.nav {
+.menuItems {
     height: 10vh;
+    display: flex;
 }
 .nav ul {
     list-style: none;
@@ -29,6 +27,11 @@ body {
     font-size: 1.4rem;
     font-weight: bold;
     padding: 10px;
+}
+.nav ul li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    transform: translate(10px, 5px) rotate(4deg);
 }
 .main {
     display: grid;
@@ -48,6 +51,9 @@ body {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
             rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
             rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.userOne{
+    background-color: #ebe4ac
 }
 
 .userOne i, .userTwo i {
@@ -174,14 +180,21 @@ h2{
 }
 
 footer {
-    grid-area: footer;
-    text-align: center;
-    font-size: 30px;
-    color: gray
+    position: absolute;
+    left: 0;
+    bottom: auto;
+    margin-top: 40px;
+    height: 10px;
+    width: 100%;
+    font-size:1.5em;
+    text-align: center;   
 }
-footer p {
+.copyright {
+    position:absolute;
+    margin: auto;
     font-size: 16px;
     bottom: 0;
+    left: 50vw
 }
 .button{
     background-color: #ddd;
@@ -192,9 +205,76 @@ footer p {
     color: #fff
 }
 .about{
+    width: 80vw;
+    margin: auto;
     display: none;
 }
+.contact, .mobileMenu {
+    display: none;
+}
+.messageBox{
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 20px 20px 50px grey;
+}
+.messageBox h2{
+    color:rgba(255, 255, 255, 0.9)
+}
+.messageBox form{
+    width: 40%;
+    background: #888;
+    border-radius: 2rem;
+    text-align: left;
+    padding: 2rem;
+    margin-bottom: 4rem;
+}
+.messageBox label{
+    background: transparent;
+    color:rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+}
+.messageBox input, .messageBox textarea {
+    width: 100%;
+}
+.messageBox textarea{
+    margin-bottom: 1rem;
+}
+.messageBox button, .messages button{
+    padding: 0.5rem 2.5rem;
+    border-radius: 1rem;
+}
+.messageBox button:hover, .messages button:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+    color:rgba(255, 255, 255, 1);
+}
+.icons{
+    font-size: 4rem;
+    
+}
+.icons a{
+    text-decoration: none;
+    color: #888;
+}
+.about h1{
+    text-align: center;
+}
+.about h1, .about h2, .about p{
+    padding: 10px 0;
+}
+.about P{
+    text-align: justify;
+}
+
 @media screen and (max-width:1024px) {
+    .menuItems{
+        display: flex;
+    }
     .main{
         display: grid;
         grid-template-areas: 
@@ -231,9 +311,34 @@ footer p {
 }
 
 @media screen and (min-width:320px) and (max-width:799px){
+    .mobileMenu{
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #000;
+        z-index: 100;
+    }
+   
     .menuItems {
+        position: fixed;
+        right: 0;
+        height: 100vh;
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--gray);
+        z-index: 99;
         display: none;
     }
+   
+    .menuItems li { 
+        color:#fff;
+    }
+
     h2{
         font-size: 25px;
     }
@@ -284,8 +389,17 @@ footer p {
         font-size: 1rem;
         font-weight: bold;
     }
+
+    }
     .board{
         font-size: 4rem;
         padding: 0;
+    }
+    .messageBox form{
+        width: 70vw;
+        height: 60vh;
+    }
+    .messageBox textarea{
+        height: 30vh;
     }
 }

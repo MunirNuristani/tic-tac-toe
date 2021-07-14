@@ -37,15 +37,15 @@
         </div>
         <div class="boardHeader">
             <div class="board">
-                <div class="slot1" id="slot1" onclick="moves(slot1); checkWinner()"></div>
-                <div class="slot2" id="slot2" onclick="moves(slot2); checkWinner()"></div>
-                <div class="slot3" id="slot3" onclick="moves(slot3); checkWinner()"></div>
-                <div class="slot4" id="slot4" onclick="moves(slot4); checkWinner()"></div>
-                <div class="slot5" id="slot5" onclick="moves(slot5); checkWinner()"></div>
-                <div class="slot6" id="slot6" onclick="moves(slot6); checkWinner()"></div>
-                <div class="slot7" id="slot7" onclick="moves(slot7); checkWinner()"></div>
-                <div class="slot8" id="slot8" onclick="moves(slot8); checkWinner()"></div>
-                <div class="slot9" id="slot9" onclick="moves(slot9); checkWinner()"></div>
+                <div id="slot1" onclick="moves(slot1); checkWinner()"></div>
+                <div id="slot2" onclick="moves(slot2); checkWinner()"></div>
+                <div id="slot3" onclick="moves(slot3); checkWinner()"></div>
+                <div id="slot4" onclick="moves(slot4); checkWinner()"></div>
+                <div id="slot5" onclick="moves(slot5); checkWinner()"></div>
+                <div id="slot6" onclick="moves(slot6); checkWinner()"></div>
+                <div id="slot7" onclick="moves(slot7); checkWinner()"></div>
+                <div id="slot8" onclick="moves(slot8); checkWinner()"></div>
+                <div id="slot9" onclick="moves(slot9); checkWinner()"></div>
             </div>
             <div class="announceWinner" style="display: none;">
                 <div class="scoreBoard"></div>
@@ -83,7 +83,7 @@
     <div class="contact">
         <div class="messageBox">
             <h2> Leave a Message</h2>
-            <form id="leave_message" name="leave_message">
+            <form id="messageForm" name="messageForm">
                 <label for="name">Name</label> <br/>
                 <input type="text" name="name" required placeholder="Name" /><br/>
                 <label for="email">Email</label><br/>

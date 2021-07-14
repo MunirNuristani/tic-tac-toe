@@ -75,7 +75,7 @@ body {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, 
                 rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
-.slot1 {
+#slot1 {
     border-right: solid var(--gray);
     border-bottom: solid var(--gray);
     display: flex;
@@ -83,7 +83,7 @@ body {
     align-items: center;
     
 }
-.slot2 {
+#slot2 {
     border-left: solid var(--gray);
     border-right: solid var(--gray);
     border-bottom: solid var(--gray);
@@ -91,7 +91,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-.slot3 {
+#slot3 {
     border-left: solid var(--gray);
     border-bottom: solid var(--gray);
     display: flex;
@@ -99,7 +99,7 @@ body {
     align-items: center;
 
 }
-.slot4{
+#slot4{
     border-top: solid var(--gray);
     border-bottom: solid var(--gray);
     border-right: solid var(--gray);
@@ -107,13 +107,13 @@ body {
     justify-content: center;
     align-items: center;
 }
-.slot5{
+#slot5{
     border: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.slot6{
+#slot6{
     border-left: solid var(--gray);
     border-top: solid var(--gray);
     border-bottom: solid var(--gray);
@@ -121,14 +121,14 @@ body {
     justify-content: center;
     align-items: center;
 }
-.slot7 {
+#slot7 {
     border-top: solid var(--gray);
     border-right: solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.slot8 {
+#slot8 {
     border-top: solid var(--gray);
     border-left: solid var(--gray);
     border-right: solid var(--gray);
@@ -136,7 +136,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-.slot9{
+#slot9{
     border-top: solid  var(--gray);
     border-left: solid var(--gray);
     display: flex;
@@ -260,6 +260,18 @@ footer {
 .icons a{
     text-decoration: none;
     color: #888;
+}
+.about{
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
+    padding: 10px;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 20px 20px 50px grey;
 }
 .about h1{
     text-align: center;
@@ -388,8 +400,6 @@ footer {
         padding: 5px 10px;
         font-size: 1rem;
         font-weight: bold;
-    }
-
     }
     .board{
         font-size: 4rem;

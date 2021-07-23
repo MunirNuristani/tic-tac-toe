@@ -22,7 +22,8 @@ const xAudio = new Audio('sounds/x-audio.mp3');
 const errorAudio = new Audio('sounds/error.mp3');
 const winnerAudio = new Audio('sounds/winner.mp3')
 const drawAudio = new Audio('sounds/draw.mp3')
-
+const cells = document.querySelectorAll(".board div")
+console.log(cells)
 let turn = 1;
 let player1Score = 0;
 let player2Score = 0;
@@ -31,7 +32,7 @@ let player2Score = 0;
 function moves(slot) {
     if(slot.innerHTML == o || slot.innerHTML == x){
         errorAudio.play();
-        alert("Cant Move there, Choose another spot.");
+        
     }else{
         if(turn == 1) {
             slot.innerHTML = x;
@@ -56,24 +57,24 @@ slots are filled.
 
 function checkWinner() {
     if (checks.winner(x)){
-        displayEl(board,"none");
         displayEl(announce, "flex")
+        disableElements(cells)
         player1Score++;
         score1.innerHTML = `${player1Score}`
         scoreBoard.innerHTML = 'Player 1 won'
         winnerAudio.play();
         
         } else  if(checks.winner(o)){
-        displayEl(board, "none");
         displayEl(announce, "flex")
+        disableElements(cells)
         player2Score++;
         score2.innerHTML = `${player2Score}`;
         scoreBoard.innerHTML = 'Player 2 won'
         winnerAudio.play();
        
     }else if (checks.tie()){
-       displayEl(board, "none");
        displayEl(announce, "flex");
+       disableElements(cells)
        scoreBoard.innerHTML = "It's a tie game";
        drawAudio.play();
     }
@@ -84,13 +85,14 @@ clears the board
 function clear() {
     displayEl(board,"grid");
     displayEl(announce,"none");
-    check("")
+    cleanSlate("")
     
 }
 /* resets the score and clears the board */
 
 function reset() {
     clear();
+    enableElemets(cells)
     player1Score = 0;
     player2Score = 0;
     score1.innerHTML = `${player1Score}`
@@ -103,6 +105,7 @@ function reset() {
 //check onclick option in HTML (notworking)
 newGame.addEventListener('click', ()=>{
     clear();
+    enableElemets(cells)
 })
 
 function toggleMenu() {
@@ -144,21 +147,15 @@ messageForm.addEventListener('submit', (event)=>{
         'Content-Type': 'application/json',
         },
         body: JSON.stringify(msg),
-        };
+    };
 
         fetch('https://jsonplaceholder.typicode.com/posts', options)
         .then(data => {
             if (!data.ok) {
                 throw Error(data.status);
              }
-                return data.json();
-            })
-            .then(msg => {
-            console.log(msg);
-            })
-            .catch(e => {
-            console.log(e);
-            });
+        })
+            .catch(e => console.log(e));
             messageForm.reset();
 
 })
@@ -186,10 +183,18 @@ const checks = {
         && (slot9.innerHTML == x || slot9.innerHTML == o)
     }
 }
+function disableElements(els){
+    els.forEach(el => el.removeAttribute("onclick"))
+}
+function enableElemets(els){
+    els.forEach(el => el.setAttribute("onclick", 
+    `moves(${el.id}); checkWinner()`))
+}
+
 function displayEl(el,type){
    return el.style.display = type;
 }
-function check(el){
+function cleanSlate(el){
  for(let i = 1; i <= 9; i++){
     document.getElementById("slot"+[i]).innerHTML =el;
  }

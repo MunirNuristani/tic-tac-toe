@@ -46,6 +46,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     font-size: 2rem;
     border-radius: 25px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
@@ -147,24 +148,33 @@ body {
 
 .announceWinner {
     display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border:  solid var(--gray);
+    padding: 20px;
     border-radius: 15px;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    height: 80vh;
+    text-align: center;
+    height: auto;
+    width: auto;
+    background-color: rgba(100, 100, 100, 0.7);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, 
                 rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 .scoreBoard{
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: bold;
+    color:#ff0000
 }
 .newGame {
     justify-items: center;
     margin: 25px;
     padding: 10px 25px;
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 h2{
@@ -182,7 +192,7 @@ h2{
 footer {
     position: absolute;
     left: 0;
-    bottom: auto;
+    bottom: 2px;
     margin-top: 40px;
     height: 10px;
     width: 100%;
@@ -194,7 +204,7 @@ footer {
     margin: auto;
     font-size: 16px;
     bottom: 0;
-    left: 50vw
+    left: 50%
 }
 .button{
     background-color: #ddd;
@@ -271,7 +281,7 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-shadow: 20px 20px 50px grey;
+    box-shadow: 20px 20px 50px grey; 
 }
 .about h1{
     text-align: center;
@@ -282,78 +292,7 @@ footer {
 .about P{
     text-align: justify;
 }
-
-@media screen and (max-width:1024px) {
-    .menuItems{
-        display: flex;
-    }
-    .main{
-        display: grid;
-        grid-template-areas: 
-            "user1 board"
-            "user2 board";
-        grid-template-columns: 1fr 3fr;
-        grid-template-rows: auto;
-    }
-    .userOne{
-        grid-area: user1;
-        height: 39vh;
-        font-size: 1.3rem;
-    }
-    .userTwo {
-        grid-area: user2;
-        height: 39vh;
-        font-size: 1.3rem;
-    }
-    .boardHeader {
-        grid-area: board;
-        grid-row-end: -1;
-    }
-    .userOne i, .userTwo i{
-        font-size: 3rem;
-        padding: 15px;
-    }
-    .nav {
-        height: 6vh;
-    }
-   .reset{
-       bottom: 10px;
-       right: 10px
-   }
-}
-
-@media screen and (min-width:320px) and (max-width:799px){
-    .mobileMenu{
-        display: block;
-        position: fixed;
-        top: 10px;
-        right: 15px;
-        font-size: 24px;
-        cursor: pointer;
-        color: #000;
-        z-index: 100;
-    }
-   
-    .menuItems {
-        position: fixed;
-        right: 0;
-        height: 100vh;
-        width: 50vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: var(--gray);
-        z-index: 99;
-        display: none;
-    }
-   
-    .menuItems li { 
-        color:#fff;
-    }
-
-    h2{
-        font-size: 25px;
-    }
+@media screen and (max-width: 1024px) {
     .main{
         display: grid;
         grid-template-areas: 
@@ -377,9 +316,47 @@ footer {
         grid-column-end: 3;
        
     }
-    .board, .announceWinner{
+    .board{
         height: 60vh;
     }
+}
+
+
+@media screen and (max-width:799px){
+    .mobileMenu{
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #000;
+        z-index: 100;
+    }
+   
+    .menuItems {
+        position: fixed;
+        right: 0;
+        height: 100vh;
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--gray);
+        z-index: 99;
+        display: none;
+    }
+   .body{
+       margin-top: 50px;
+   }
+    .menuItems li { 
+        color:#fff;
+    }
+
+    h2{
+        font-size: 25px;
+    }
+
     .userOne i, .userTwo i{
         font-size: 2rem !important;
         padding: 2px !important;
@@ -388,7 +365,7 @@ footer {
         font-size: 20px;
     }
     h3{
-        font-size: 16px;
+        font-size: 20px;
     }
     .header{
         height: 0vh;
@@ -411,5 +388,14 @@ footer {
     }
     .messageBox textarea{
         height: 30vh;
+    }
+}
+@media screen and (max-width:420px) {
+    .body{
+        margin-top: 60px;
+    }
+    .board{
+        height: 40vh;
+        margin-top: 60px;
     }
 }

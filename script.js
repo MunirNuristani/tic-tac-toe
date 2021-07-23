@@ -33,6 +33,7 @@ function moves(slot) {
     if(slot.innerHTML == o || slot.innerHTML == x){
         errorAudio.play();
         
+        
     }else{
         if(turn == 1) {
             slot.innerHTML = x;
@@ -40,13 +41,14 @@ function moves(slot) {
             xAudio.play();
             userOne.style.background = '#ddd'
             userTwo.style.background = '#ebe4ac'
-            
+            slot.style.cursor ="not-allowed"
         }else {
             slot.innerHTML = o;
             turn = 1;
             oAudio.play();
             userOne.style.background = '#ebe4ac'
             userTwo.style.background = '#ddd'
+            slot.style.cursor ="not-allowed"
         }
     }
 } 
@@ -187,8 +189,10 @@ function disableElements(els){
     els.forEach(el => el.removeAttribute("onclick"))
 }
 function enableElemets(els){
-    els.forEach(el => el.setAttribute("onclick", 
-    `moves(${el.id}); checkWinner()`))
+    els.forEach(el => {el.setAttribute("onclick", 
+    `moves(${el.id}); checkWinner()`);
+    el.style.cursor = "pointer"
+    })
 }
 
 function displayEl(el,type){
